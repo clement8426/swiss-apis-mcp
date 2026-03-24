@@ -1,0 +1,28 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+
+# Environment & secrets — NEVER commit
+.env
+*.env
+!.env.example
+
+# Stored API keys (written by swiss_set_api_key)
+~/.swiss-apis-mcp/
+
+# TypeScript
+*.tsbuildinfo
+
+# Test output
+coverage/
+
+# macOS
+.DS_Store
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo

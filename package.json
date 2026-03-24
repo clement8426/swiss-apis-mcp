@@ -1,0 +1,46 @@
+{
+  "name": "swiss-apis-mcp",
+  "version": "1.0.0",
+  "description": "Comprehensive MCP server for Swiss official public APIs — transport, geo, health, politics, business, energy, food, statistics",
+  "type": "module",
+  "bin": {
+    "swiss-apis-mcp": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx src/index.ts",
+    "start": "node dist/index.js",
+    "inspector": "npx @modelcontextprotocol/inspector tsx src/index.ts",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "test:integration": "vitest run --config vitest.integration.config.ts",
+    "test:all": "vitest run && vitest run --config vitest.integration.config.ts"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "axios": "^1.6.0",
+    "dotenv": "^17.3.1",
+    "zod": "^3.22.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "tsx": "^4.0.0",
+    "typescript": "^5.0.0",
+    "vitest": "^4.1.1"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "keywords": [
+    "mcp",
+    "switzerland",
+    "swiss",
+    "opendata",
+    "swisstopo",
+    "transport",
+    "health",
+    "geoadmin"
+  ],
+  "license": "MIT"
+}
