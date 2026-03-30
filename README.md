@@ -139,15 +139,41 @@ MCP (Model Context Protocol) server exposing **all major Swiss official public A
 
 ## Installation
 
-### 1. Clone and install
+### 1. From npm (recommended)
 
-```bash
-git clone https://github.com/YOUR_USERNAME/swiss-apis-mcp.git
-cd swiss-apis-mcp
-npm install
+No clone required. Point your MCP client at the published package:
+
+```json
+{
+  "mcpServers": {
+    "swiss-apis-mcp": {
+      "command": "npx",
+      "args": ["-y", "swiss-apis-mcp"]
+    }
+  }
+}
 ```
 
-### 2. Optional API keys
+Or install globally and run the compiled entrypoint:
+
+```bash
+npm install -g swiss-apis-mcp
+```
+
+Then use `"command": "swiss-apis-mcp"` (and `"args": []` if your client requires the field) in the same config shape as above.
+
+### 2. From source (development)
+
+```bash
+git clone https://github.com/clement8426/swiss-apis-mcp.git
+cd swiss-apis-mcp
+npm install
+npm run build
+```
+
+Use `node /path/to/swiss-apis-mcp/dist/index.js` or `npx tsx src/index.ts` in your MCP config while developing.
+
+### 3. Optional API keys
 
 Most tools work with zero configuration. Four tools need free credentials:
 
@@ -167,7 +193,7 @@ cp .env.example .env
 # Edit .env with your keys
 ```
 
-### 3. Test locally
+### 4. Test locally (from a clone)
 
 ```bash
 npm run inspector
@@ -179,6 +205,8 @@ Opens the MCP Inspector at `http://localhost:6274` — run any tool interactivel
 
 ## Integration
 
+Examples below use **`npx -y swiss-apis-mcp`** (published package). From a local clone, replace the `args` with `["tsx", "/absolute/path/to/swiss-apis-mcp/src/index.ts"]` or `["node", "/absolute/path/to/swiss-apis-mcp/dist/index.js"]` after `npm run build`.
+
 ### Claude Desktop
 
 Edit `~/Library/Application Support/Claude/claude_desktop_config.json` (macOS) or `%APPDATA%\Claude\claude_desktop_config.json` (Windows):
@@ -186,9 +214,9 @@ Edit `~/Library/Application Support/Claude/claude_desktop_config.json` (macOS) o
 ```json
 {
   "mcpServers": {
-    "swiss-apis": {
+    "swiss-apis-mcp": {
       "command": "npx",
-      "args": ["tsx", "/absolute/path/to/swiss-apis-mcp/src/index.ts"]
+      "args": ["-y", "swiss-apis-mcp"]
     }
   }
 }
@@ -201,9 +229,9 @@ Edit `~/.cursor/mcp.json` (global) or `.cursor/mcp.json` (project-level):
 ```json
 {
   "mcpServers": {
-    "swiss-apis": {
+    "swiss-apis-mcp": {
       "command": "npx",
-      "args": ["tsx", "/absolute/path/to/swiss-apis-mcp/src/index.ts"]
+      "args": ["-y", "swiss-apis-mcp"]
     }
   }
 }
@@ -216,18 +244,18 @@ Edit `~/.codeium/windsurf/mcp_config.json`:
 ```json
 {
   "mcpServers": {
-    "swiss-apis": {
+    "swiss-apis-mcp": {
       "command": "npx",
-      "args": ["tsx", "/absolute/path/to/swiss-apis-mcp/src/index.ts"]
+      "args": ["-y", "swiss-apis-mcp"]
     }
   }
 }
 ```
 
-### Claude Code (CLI)
+### Claude Code
 
 ```bash
-claude mcp add swiss-apis npx tsx /absolute/path/to/swiss-apis-mcp/src/index.ts
+claude mcp add swiss-apis-mcp npx -y swiss-apis-mcp
 ```
 
 ### Continue.dev
@@ -242,15 +270,13 @@ In `.continue/config.json`:
         "transport": {
           "type": "stdio",
           "command": "npx",
-          "args": ["tsx", "/absolute/path/to/swiss-apis-mcp/src/index.ts"]
+          "args": ["-y", "swiss-apis-mcp"]
         }
       }
     ]
   }
 }
 ```
-
-> **Tip:** You can also build first (`npm run build`) and use `node dist/index.js` instead of `npx tsx src/index.ts` for faster startup.
 
 ---
 
@@ -349,4 +375,7 @@ registerMyDomainTools(server);
 - [ZEFIX Swagger](https://www.zefix.admin.ch/ZefixPublicREST/swagger-ui/index.html)
 - [OpenParlData](https://api.openparldata.ch/documentation)
 - [Fedlex SPARQL](https://fedlex.data.admin.ch/sparqlendpoint)
-# swiss-apis-mcp
+
+## Licence
+
+MIT — see [LICENSE](LICENSE).

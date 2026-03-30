@@ -6,7 +6,12 @@
   "bin": {
     "swiss-apis-mcp": "./dist/index.js"
   },
+  "files": [
+    "dist",
+    ".env.example"
+  ],
   "scripts": {
+    "prepublishOnly": "npm run build",
     "build": "tsc",
     "dev": "tsx src/index.ts",
     "start": "node dist/index.js",
@@ -32,6 +37,14 @@
   "engines": {
     "node": ">=18.0.0"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/clement8426/swiss-apis-mcp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/clement8426/swiss-apis-mcp/issues"
+  },
+  "homepage": "https://github.com/clement8426/swiss-apis-mcp#readme",
   "keywords": [
     "mcp",
     "switzerland",
