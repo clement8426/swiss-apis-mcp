@@ -1,10 +1,10 @@
 {
   "name": "swiss-apis-mcp",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Comprehensive MCP server for Swiss official public APIs — transport, geo, health, politics, business, energy, food, statistics",
   "type": "module",
   "bin": {
-    "swiss-apis-mcp": "./dist/index.js"
+    "swiss-apis-mcp": "dist/index.js"
   },
   "files": [
     "dist",
